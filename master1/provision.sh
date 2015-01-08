@@ -1,8 +1,5 @@
 #!/bin/bash
 
-export http_proxy=http://proxy-us.intel.com:911/
-export https_proxy=http://proxy-us.intel.com:911/
-
 # remove unused services
 service puppet stop
 update-rc.d -f puppet remove

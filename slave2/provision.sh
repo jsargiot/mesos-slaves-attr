@@ -1,8 +1,5 @@
 #!/bin/bash
 
-export http_proxy=http://proxy-us.intel.com:911/
-export https_proxy=http://proxy-us.intel.com:911/
-
 # remove unused services
 service puppet stop
 update-rc.d -f puppet remove
@@ -53,8 +50,16 @@ apt-get -y remove --purge zookeeper
 echo 33.33.33.102 | tee /etc/mesos-slave/ip
 cp /etc/mesos-slave/ip /etc/mesos-slave/hostname
 
+# Set slave attributes
+# role: The role of the slave.
+# zone: Zone where the host is located.
+echo "role:scrapinghub;zone:us-east-1" | tee /etc/mesos-slave/attributes
+
 # Specify Zookeeper service
 echo zk://33.33.33.100:2181/mesos | tee /etc/mesos/zk
+
+# Remove old state data
+rm -rf /tmp/mesos/meta
 
 # Restart service
 service mesos-slave restart
