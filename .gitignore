@@ -1,0 +1,4 @@
+# -*- mode: conf -*-
+
+# Vagrant
+.vagrant/
