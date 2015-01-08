@@ -9,10 +9,12 @@ Example Vagrant VMs to run mesos-slaves with attributes.
 ## How to run
 
 - Master:
+
         cd master1/
         vagrant up
 
 - Slave:
+
         cd slaveX/    # Where X is 1, 2 or 3
         vagrant up
 
