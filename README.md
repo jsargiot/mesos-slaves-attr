@@ -1,6 +1,6 @@
 # mesos-slaves-attr
 
-Example Vagrant VMs to run mesos-slaves with attributes.
+Example Vagrant VMs to run mesos-slaves with attributes and roles.
 
 # Content
     - A mesos MASTER with marathon enabled (master1/).
@@ -21,7 +21,7 @@ Example Vagrant VMs to run mesos-slaves with attributes.
 Once the master and the slaves are up, you can go to: `http://33.33.33.100:5050`
 to check the Mesos Web UI. Marathon will be running on `http://33.33.33.100:8080`
 
-## Attributes
+## Attributes & Roles
 
 - slave1:
 
@@ -30,7 +30,7 @@ to check the Mesos Web UI. Marathon will be running on `http://33.33.33.100:8080
 
 - slave2:
 
-        role=scrapinghub
+        role=scrapingcloud
         zone-us-east-1
 
 - slave3:
@@ -38,6 +38,7 @@ to check the Mesos Web UI. Marathon will be running on `http://33.33.33.100:8080
         role=platform
         zone-us-west-1
 
+By default, marathon is configured to run with the `platform` role.
 
 ## Testing attributes
 

@@ -53,7 +53,10 @@ cp /etc/mesos-slave/ip /etc/mesos-slave/hostname
 # Set slave attributes
 # role: The role of the slave.
 # zone: Zone where the host is located.
-echo "role:scrapinghub;zone:us-east-1" | tee /etc/mesos-slave/attributes
+echo "role:scrapingcloud;zone:us-east-1" | tee /etc/mesos-slave/attributes
+
+# Set slave default role
+echo "scrapingcloud" | tee /etc/mesos-slave/default_role
 
 # Specify Zookeeper service
 echo zk://33.33.33.100:2181/mesos | tee /etc/mesos/zk

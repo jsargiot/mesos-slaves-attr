@@ -51,6 +51,9 @@ echo manual | tee /etc/init/mesos-slave.override
 echo 33.33.33.100 | tee /etc/mesos-master/ip
 cp /etc/mesos-master/ip /etc/mesos-master/hostname
 
+# Set available roles for frameworks
+echo "platform,scrapingcloud" | tee /etc/mesos-master/roles
+
 # Specify Zookeeper service
 echo zk://33.33.33.100:2181/mesos | tee /etc/mesos/zk
 
@@ -64,7 +67,11 @@ echo Cluster001 | tee /etc/mesos-master/cluster
 mkdir -p /etc/marathon/conf
 cp /etc/mesos-master/hostname /etc/marathon/conf
 cp /etc/mesos/zk /etc/marathon/conf/master
+
+# Configure marathon's zookeeper connection
 echo zk://33.33.33.100:2181/marathon | tee /etc/marathon/conf/zk
+# Configure marathon's role
+echo "platform" | tee /etc/marathon/conf/mesos_role
 
 # Restart services
 service zookeeper restart
